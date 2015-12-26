@@ -1,0 +1,33 @@
+body {
+    background: url("../../image/loginbj.jpg") repeat scroll;
+    background-size: cover;
+}
+body .logcen {
+    background: url("../../image/logincen.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 320px;
+    left: 50%;
+    margin: -160px 0 0 -310px;
+    position: absolute;
+    top: 50%;
+    width: 621px;
+}
+.table_border_none tr td img.verify {
+    margin-top: -1px;
+}
+.table_border_none tr td:first-child {
+    text-indent: 40px;
+    text-align: right;
+}
+.table_border_none input {
+    width: 45%;
+}
+.table_border_none input[name^='code'] {
+    width: 80px;
+}
+.table_border_none input[type='submit'] {
+    text-align: center;
+}
+.table_border_none img.verify {
+    width: 94px;
+    height: 25px;
+}

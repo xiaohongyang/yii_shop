@@ -1,0 +1,33 @@
+本扩展是一个通用扩展，你可以将它移植到任何php项目中，该扩展来源于ThinkPHP的4个控制器方法success() error() ajaxReturn() dispatchJump()。
+
+将jumpage目录复制到yii项目目录\protected\extensions下面
+编辑应用配置main.php，注册组件'jump'，名字自拟
+'components'=>array(
+
+		....
+
+		'jump'=>array(
+                    'class'=>'ext.jumpage.jumpage',
+		    'successWait'=>5,//成功提示等待跳转时间，可以不指定，默认是2秒
+		    'errorWait'=>6 //错误信息等待跳转时间，同上，默认3秒
+                ),
+)
+
+之后可以直接使用了，例如在控制器中
+
+Yii::app()->jump->success("成功信息");
+Yii::app()->jump->error("失败信息");
+Yii::app()->jump->ajaxReturn(array('status'=>1,'info'=>'返回ajax数据','data'=>$data));
+
+另外可以支持自定义跳转url，具体的请查看 jumpage.php里的函数，或者看ThinkPHP中的url跳转部分的手册内容。
+
+
+Yii之外的项目：
+将jumpage目录放到合适的位置，include包含jumpage.php文件，范例：
+<?php
+include dirname(__FILE__)."/extension/jumpage/jumpage.php";
+$jump = new jumpage();
+$jump->successWait = 5;
+$jump->errorWait = 3;
+$jump->success("成功信息");
+?>

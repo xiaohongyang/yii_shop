@@ -1,0 +1,12 @@
+.footer {
+  margin-top: 50px;
+}
+.list_edit {
+  padding-bottom: 250px;
+}
+.list_edit .label {
+  padding: 0;
+}
+.list_edit .desc div {
+  text-indent: 1em;
+}
