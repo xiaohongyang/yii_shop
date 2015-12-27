@@ -5,7 +5,7 @@
 <?php
     use yii\helpers\Html;
 
-    \app\assets\admin\AppAsset::register($this);
+    \app\assets\adminshop\AppAsset::register($this);
 
 ?>
 <?php $this->beginPage(); ?>
@@ -18,9 +18,11 @@
 
     <?php $this->head(); ?>
 
+<!--    <link href="http://fonts.useso.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />-->
+
     <?=Html::cssFile("@web/css/adminshop.css") ?>
 
-    <?=Html::jsFile("@web/ecshop/js/admin/validator.js") ?>
+
 
     <script type="text/javascript">
 
@@ -55,6 +57,7 @@
 
 <?=Yii::$app->view->renderFile(Yii::$aliases['@moduleViewPath']."/public/footer.php") ?>
 
+<?=Html::jsFile("@web/ecshop/js/admin/validator.js") ?>
 <?php $this->endBody(); ?>
 </body>
 </html>

@@ -2,7 +2,6 @@
 
     <?=Yii::$app->params['memory_info']?>
     <?=Yii::$app->params['gzip_enabled']?>
-
     <?=Yii::$app->params[lang]['cfg_name']['basic']?>
 </div>
 
