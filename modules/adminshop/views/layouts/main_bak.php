@@ -23,6 +23,7 @@
     <?=Html::cssFile("@web/css/adminshop.css") ?>
 
 
+
     <script type="text/javascript">
 
 
@@ -66,7 +67,6 @@
 </body>
 </html>
 <?php $this->endPage(); ?>
-
 <script>
     jQuery(document).ready(function () {
         Metronic.init(); // init metronic core componets

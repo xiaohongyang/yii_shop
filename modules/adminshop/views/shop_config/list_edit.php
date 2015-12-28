@@ -22,9 +22,6 @@ $this->params[breadcrumbs][] = $this->title;
 
 <div class="list_edit">
 
-    <?php $form = ActiveForm::begin([
-        'method' => 'post',
-    ])?>
 
 
 
@@ -59,7 +56,6 @@ $this->params[breadcrumbs][] = $this->title;
         <?=Html::submitButton(" 提交 ", ['class' => 'btn btn-success center-block' ]);  ?>
 
 
-    <?$form->end()?>
 
 </div>
 
