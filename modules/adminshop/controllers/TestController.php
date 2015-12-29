@@ -28,6 +28,10 @@ class TestController extends BaseController{
 //            echo ($v->id. ':' . $v->code . "\r\n");
 //        }
 
+        echo \Yii::getAlias("@webroot")."<hr/>";
+
+
+
         $model = new Test_student();
         $result = $model->find()->where('id > :id', array(':id' => 0))->all();
         foreach($result as $row){
