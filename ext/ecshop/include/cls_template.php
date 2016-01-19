@@ -34,7 +34,7 @@ function html_options($arr)
     {
         foreach ($options AS $key => $val)
         {
-            $out .= $key == $selected ? "<option value=\"$key\" selected>$val</option>" : "<option value=\"$key\">$val</option>";
+            $out .= ( $key == $selected ? "<option value=\"$key\" selected>$val</option>" : "<option value=\"$key\">$val</option>");
         }
     }
 

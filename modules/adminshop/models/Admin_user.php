@@ -51,7 +51,6 @@ class Admin_user extends ActiveRecord implements IdentityInterface{
             ],
             [
 
-
                 ['captcha'],'captcha', 'on' => self::SCENARIO_LOGIN,
             ]
 
@@ -201,7 +200,7 @@ class Admin_user extends ActiveRecord implements IdentityInterface{
                     $user->trigger(self::EVENT_AFTER_LOGIN);
                     return true;
                 } else {
-                    $this->addError('password', '用户或密码错误!');
+                    $this->addError('password', t('users', 'login_failure'));
                 }
             }
         }

@@ -198,26 +198,37 @@ class Uploadform extends ActiveRecord{
     }
 
 
-    public function updateColumnValue($columnValue, $fileName)
+    public function delOlddata($uploadId, $columnValue){
+
+        $tableName = '';
+        $columnName = '';
+        $oneData = Uploadform::findOne($uploadId);
+        if($oneData &&  $tableName = $oneData['table_name'] && $columnName = $oneData['column_name'] ){
+
+            Uploadform::deleteAll(['table_name'=>$tableName, 'column_name'=>$columnName, 'column_value'=>$columnValue]);
+        }
+    }
+
+    //更新column_value值
+    public function updateColumnValue($uploadId, $columnValue)
     {
 
 
-        $count = $this->find()->where(['column_value'=>$columnValue, 'file_name'=>$fileName])->count();
-        $sql = $this->find()->where(['column_value'=>$columnValue, 'file_name'=>$fileName])->createCommand()->getRawSql();
+        //更新数据
+        $data = $this->findOne($uploadId) ;
+        $data->column_value=$columnValue ;
+        $rs = $data->save();
+        return $rs;
+    }
 
-        if ($count) {
-            //数据没有修改，返回
+    public static function getIdByFileName($fileName, $tableName){
 
-            return false;
-        }
+        $uploadId = 0;
+        $data = Uploadform::find()->where(['file_name'=>$fileName, 'table_name'=>$tableName])->select('upload_id')->one();
+        if($data && $uploadId = $data['upload_id'])
+            return  $uploadId;
 
-        //将旧的column_value清空
-        \Yii::$app->db->createCommand()->update(self::tableName(), ['column_value'=>''], ['column_value'=>$columnValue])->execute();
-
-        //更新新的column_value
-        $upRow = $this->findOne(array('file_name'=>$fileName));
-        $upRow->column_value = $columnValue;
-        $upRow->save();
+        return $uploadId;
     }
 
 }

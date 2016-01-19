@@ -10,18 +10,24 @@
 ?>
 <?php $this->beginPage(); ?>
 <!DOCTYPE html>
-<html lang="utf-8">
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="utf-8" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
     <?=HTML::csrfMetaTags() ?>
     <title><?=$this->title?></title>
-
+<!--    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />-->
     <?php $this->head(); ?>
 
 <!--    <link href="http://fonts.useso.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />-->
-
     <?=Html::cssFile("@web/css/adminshop.css") ?>
-
 
     <script type="text/javascript">
 
@@ -38,7 +44,7 @@
     </script>
 
 
-
+    <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body>
 
@@ -49,11 +55,11 @@
     <?/*//=$content*/?>
 </div>-->
 <div class="page-content-wrapper">
-    <div class="page-content" style="min-height:1656px">
+    <div class="page-content" style="min-height:1656px; height: auto;">
 
         <?=Yii::$app->view->renderFile(Yii::$aliases['@moduleViewPath']."/public/header.php") ?>
 
-        <div class="row">
+        <div class="page-content-body">
             <?=$content?>
         </div>
         <!-- END PAGE HEADER-->

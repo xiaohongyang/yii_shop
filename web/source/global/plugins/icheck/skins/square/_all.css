@@ -302,7 +302,7 @@
     vertical-align: middle;
     margin: 0;
     padding: 0;
-    width: 22px;
+    width: 23px;
     height: 22px;
     background: url(grey.png) no-repeat;
     border: none;
@@ -333,7 +333,7 @@
         background-position: -144px 0;
     }
     .iradio_square-grey.checked {
-        background-position: -168px 0;
+        background-position: -169px 0;
     }
     .iradio_square-grey.disabled {
         background-position: -192px 0;

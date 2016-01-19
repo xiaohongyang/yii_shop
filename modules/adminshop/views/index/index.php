@@ -160,7 +160,7 @@ use app\assets\admin\ToFrameAsset;
                     {
                         id: 'userlist',
                         text: '会员列表',
-                        href: '<?=Yii::$app->urlManager->createUrl('/adminshop/article/articles')?>'
+                        href: '<?=Yii::$app->urlManager->createUrl('/adminshop/users/list')?>'
                     },
                 ]
             }]

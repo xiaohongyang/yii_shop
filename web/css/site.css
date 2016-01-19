@@ -75,8 +75,20 @@ a.desc:after {
   margin: 0 0 15px 0;
 }
 /******************************template css begin ***********************************/
+.page-content-wrapper .page-bar {
+  margin-bottom: 10px;
+}
 .page-content-wrapper .page-content {
   margin: 0;
   padding: 0;
+}
+.page-content-wrapper .page-content .page-content-body {
+  padding: 0 20px;
+}
+.page-content-wrapper .page-content .page-content-body .pb30 {
+  padding-bottom: 130px;
+}
+.page-content-wrapper .page-content .page-content-body .mb30 {
+  margin-bottom: 30px;
 }
 /******************************template css end   ***********************************/

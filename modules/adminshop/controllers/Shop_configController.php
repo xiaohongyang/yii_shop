@@ -31,9 +31,16 @@ class Shop_configController extends BaseController{
     public function actionList_edit()
     {
 
-
         //配置列表
         $model = new Shop_config();
+
+
+        //处理表单提交
+        if (\Yii::$app->request->isPost) {
+
+            $model->postDataHandle(\Yii::$app->request->post());
+        }
+
         $settingList = $model->get_settings(null, [5]);
 
         //可选语言
@@ -72,35 +79,10 @@ class Shop_configController extends BaseController{
 
         assign_query_info();
 
-
-        if (\Yii::$app->request->isPost) {
-
-            $post = \Yii::$app->request->post();
-
-
-            $valueArr = $post['value'];
-            $upFormArr = $post['UploadForm'];
-
-            $uploadFormModel = new Uploadform();
-
-            //更新上传文件缓存表
-            foreach ($upFormArr as $k=>$file_name) {
-
-                $column_value = null;
-                if ( $file_name && $column_value = array_keys($valueArr, $file_name) ) {
-
-                    $uploadFormModel->updateColumnValue($column_value, $file_name);
-                }
-
-            }
-
-
-
-        }
-
-
         return $this->render('list_edit',['viewBag'=>$this->viewBag]);
     }
+
+
 
     public function actionUpload()
     {

@@ -227,5 +227,58 @@ class Shop_config extends ActiveRecord{
         return $arr;
     }
 
+    /**
+     * //处理表单提交
+     * @param $post
+     */
+    public function postDataHandle($post){
+
+        $valueArr = $post['value'];
+
+        $uploadArr = $post['UploadForm'];
+        $invoiceTypeValue = array(
+            'type' => $post['invoice_type'],
+            'rate' => $post['invoice_rate']
+        );
+
+        $uploadForm = new Uploadform( );
+        $uploadForm->setFileTableName( Uploadform::TABLE_NAME_SHOP_CONFIG );
+
+        //更新上传文件缓存表
+        foreach ($uploadArr as $k=>$file_name) {
+
+            $column_value = null;
+            if ( $file_name && $column_value = array_search($file_name, $valueArr) ) {
+
+                $uploadId = Uploadform::getIdByFileName($file_name, Uploadform::TABLE_NAME_SHOP_CONFIG);
+                $uploadForm->updateColumnValue($uploadId, $column_value);
+            }
+        }
+
+        //保存Shop_config表
+        foreach( $valueArr as $id=>$value ){
+
+            $modle = $this->findOne($id);
+            if($modle->value == $value)
+                continue;
+
+            //图片路径
+            if(in_array($value, array_values($uploadArr) ))
+                $modle->store_dir = $uploadForm->getDir();
+
+            $modle->value = $value;
+            $modle->save();
+        }
+
+        //保存税率
+        $dataInvoiceType = $modle->findOne(['code' => 'invoice_type']);
+        $invoiceTypeValue = serialize( $invoiceTypeValue );
+        if( $dataInvoiceType->value != $invoiceTypeValue ){
+
+            $dataInvoiceType->value = $invoiceTypeValue;
+            $dataInvoiceType->save();
+        }
+
+    }
 
 }

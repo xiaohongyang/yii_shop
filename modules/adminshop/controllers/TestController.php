@@ -19,41 +19,40 @@ class TestController extends BaseController{
 
     public  function  actionTest(){
 
-//        $shopConfig = new Shop_config();
-//
-//        $result = $shopConfig->find()->where('id > :id', array(':id' => 900))->all();
-//
-//        foreach($result as $v){
-//
-//            echo ($v->id. ':' . $v->code . "\r\n");
-//        }
+        $m = Test_student::find(['id'=>20])->all();
+        echo $m->name;
+        echo $m['name'];
 
-        echo \Yii::getAlias("@webroot")."<hr/>";
+        p($m);
+        exit;
 
+        $m->name = 321;
+        $m->save();
 
+        $m = Test_student::find(['id'=>20])->all();
+        echo $m->name;
+        echo $m['name'];
 
-        $model = new Test_student();
-        $result = $model->find()->where('id > :id', array(':id' => 0))->all();
-        foreach($result as $row){
-            print_r($row);
-
-            echo $row->id;
-            echo $row->name;
-        }
 
     }
+
+
 
 
     public  function  actionCreate(){
 
         $model = new Test_student();
+        $post = \Yii::$app->request->post();
 
-        if($model->load(\Yii::$app->request->post()) && $model->validate()){
-            \Yii::$app->session->setFlash('success', '添加成功!');
+        $param = array('info'=>'');
+
+        //$model->created_on = time();
+        if(\Yii::$app->request->isPost){
+            if($model->load($post) && $model->validate() && $model->save())
+                $param['info'] = '添加成功!';
         }
 
-        return $this->render("create", ["model" => $model ]);
-
+        return $this->render('create', ['model'=>$model, 'param'=>$param] );
     }
 
 }

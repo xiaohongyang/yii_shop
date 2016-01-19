@@ -17,6 +17,7 @@ class PublicController extends  BaseController{
 
     public function init()
     {
+
         $this->checkLogin = false;
     }
 

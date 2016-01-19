@@ -20,13 +20,28 @@ $this->params[breadcrumbs][] = $this->title;
 
 
 
-<div class="list_edit">
+<div class="portlet p10">
 
 
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cog"></i>商店设置
+        </div>
+
+    </div>
+
+    <?php
+        ActiveForm::begin([
+            'method'    => 'post',
+            'options'     => ['class' => 'form-horizontal']
+        ]);
+    ?>
 
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
+
+
         <?php
             foreach ($viewBag['group_list'] as $_k=>$group):
                 if($_k == 1): ?>
@@ -39,12 +54,16 @@ $this->params[breadcrumbs][] = $this->title;
         </ul>
 
         <!-- Tab panes -->
-        <div class="tab-content ">
+        <div class="tab-content  no-space  ">
             <?php
                 foreach ($viewBag['group_list'] as $_k=>$group) {
             ?>
-                    <div role="tabpanel" class="tab-pane  <?= $_k == 1 ? 'active' : '' ?>" id="group<?= $_k ?>">
-                        网店信息<?= $_k ?>
+                    <!--<div role="tabpanel" class="tab-pane  <?/*= $_k == 1 ? 'active' : '' */?>" id="group<?/*= $_k */?>">
+                        网店信息<?/*= $_k */?>
+                        <?/*=Shop_config_editWidget::widget(['group'=> $group]);
+                        */?>
+                    </div>-->
+                    <div role="tabpanel" class="tab-pane  <?= $_k == 1 ? 'active' : '' ?> pb10 " id="group<?= $_k ?>">
                         <?=Shop_config_editWidget::widget(['group'=> $group]);
                         ?>
                     </div>
@@ -53,7 +72,7 @@ $this->params[breadcrumbs][] = $this->title;
             ?>
         </div>
 
-        <?=Html::submitButton(" 提交 ", ['class' => 'btn btn-success center-block' ]);  ?>
+        <?=Html::submitButton(" 提交 ", ['class' => 'btn btn-success center-block  mb30'  ]);  ?>
 
 
 
@@ -65,6 +84,7 @@ $this->params[breadcrumbs][] = $this->title;
     <?php
         echo AjaxFileUploadWidget::widget(['objClass'=>'.ajax_upload']);
     ?>
-
 </script>
+
+
 
