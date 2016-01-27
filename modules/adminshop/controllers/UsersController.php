@@ -10,6 +10,9 @@ namespace app\modules\adminshop\controllers;
 
 
 use app\modules\adminshop\models\User_rank;
+use app\modules\adminshop\models\Users;
+use app\modules\adminshop\models\UsersSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\User;
 
 class UsersController extends BaseController{
@@ -23,8 +26,22 @@ class UsersController extends BaseController{
 
         $userList = array();
         $userList['rankList'] = $rankList;
-        return $this->render('list', ['userList'=> $userList]);
 
+
+        $searchModel = new UsersSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->get());
+
+        return $this->render('list', [
+                                    'model'=> $searchModel,
+                                    'dataProvider'=>$dataProvider,
+                                    'rankList' => $rankList
+                                ]
+                            );
+
+    }
+
+    public function actionEdit(){
+        echo 33;
     }
 
 }

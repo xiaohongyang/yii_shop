@@ -27,3 +27,7 @@ function U() {
 
     return _APP_+'?'+arr.join('&');
 }
+
+$(function(){
+    $(".select2").select2();
+})

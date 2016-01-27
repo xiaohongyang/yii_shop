@@ -30,8 +30,6 @@ class IndexController extends BaseController{
 
         \Yii::$app->view->on(View::EVENT_BEGIN_BODY, function () {
 
-
-
         });
 
         return $this->render('index');

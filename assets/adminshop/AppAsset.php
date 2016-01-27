@@ -7,6 +7,7 @@
 namespace app\assets\adminshop;
 
 use yii\web\AssetBundle;
+use app\assets\admin;
 
 /**
  * @author Qiang Xue <qiang.xue@gmail.com>
@@ -118,12 +119,21 @@ class AppAsset extends AssetBundle
 
         //for icheck's js begin
         "source/global/plugins/icheck/icheck.min.js" ,
-        "assets/admin/pages/scripts/form-icheck.js"
+        "assets/admin/pages/scripts/form-icheck.js",
         //for icheck's js end
 
 
+        "source/global/plugins/select2/select2.js"
         //模板js end
 
+
+
+
+
+
+
+
+        ,"js/common.js"
     ];
     public $depends = [
         //'yii\web\YiiAsset',
